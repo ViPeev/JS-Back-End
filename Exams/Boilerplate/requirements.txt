@@ -1,0 +1,16 @@
+[X] Use of templates
+[X] Use of a database
+[X] User registration
+[X] cookies and session
+[X] hashing passwords
+[X] JSON Web Token
+[X] Error handling
+[ ] User route guards
+[] Full CRUD (app specific)
+- catalog
+- details
+- create
+- edit
+- delete
+
+Demo global error handling
