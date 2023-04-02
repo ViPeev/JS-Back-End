@@ -1,0 +1,101 @@
+<div class="container">
+  <div class="col-9">
+    <!-- Start Pet Photo Post Section -->
+    <div class="card">
+      <div class="top">
+        <!-- Start User Details and Image Location Section -->
+        <div class="userDetails">
+          <!-- Link to User Profile Details Page-->
+          <div>
+            <div class="profilepic">
+              <div class="profile_img">
+                <div class="image">
+                  <img src="/static/images/person.png">
+                </div>
+              </div>
+            </div>
+          </div>
+          <h3>
+            <!-- Link to User Profile Details Page -->
+            <p>
+              <!-- User's username -->
+              {{product.owner.username}}
+            </p>
+            <!-- photo's location -->
+            <span>{{product.location}}</span>
+            {{#if user}}
+              <!-- IF the viewer is the creator of the photo -->
+              {{#if isOwner}}
+                <div class="edit-delete-btns">
+                  <!-- Edit Pet Photo -->
+                  <a href="/details/{{product._id}}/edit">
+                    <img
+                      class="edit-img"
+                      src="/static/images/edit-pen-icon-6.jpg"
+                      alt="edit button"
+                    />
+                  </a>
+
+                  <!--Delete Pet Photo -->
+                  <a href="/details/{{product._id}}/delete">
+                    <img
+                      class="bin-img"
+                      src="/static/images/icon-remove-22.jpg"
+                      alt="bin button"
+                    />
+                  </a>
+                </div>
+              {{/if}}
+            {{/if}}
+          </h3>
+        </div>
+      </div>
+
+      <!-- Start Pet Photo -->
+      <div class="imgBx">
+        <!-- Pet Photo -->
+        <img src="{{product.image}}" alt="post" class="cover" />
+      </div>
+
+      <div class="bottom">
+        <p class="message">
+          <b class="petDescription">{{product.description}}</b>
+        </p>
+
+        <!-- Photo description -->
+        <div class="pet-details">
+          <p class="petName">Name: {{product.name}}</p>
+          <p class="petAge">Age: {{product.age}}</p>
+        </div>
+        {{#if comments}}
+        <div class="comments">
+          <div class="comments-top">
+            {{#each comments}}
+            {{>comment}}
+            {{/each}}
+          </div>
+        </div>
+      </div>
+      {{/if}}
+      {{#if user}}
+      {{#if isOwner}}
+      {{else}}
+      <div class="addComments">
+        <!-- Start Add Comments Form -->
+        <form method="post" action="/details/{{product._id}}/comment">
+          <textarea
+            id="comment-textarea"
+            name="comment"
+            cols="40"
+            rows="10"
+            placeholder="Add comment..."
+          ></textarea>
+          <!-- Post Comments Button -->
+          <button type="submit">Post</button>
+        </form>
+      </div>
+      {{/if}}
+      {{/if}}
+    </div>
+  </div>
+</div>
